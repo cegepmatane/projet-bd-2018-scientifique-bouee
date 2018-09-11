@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 
+
 def writeValues(json):
     try : 
         conn = MongoClient()

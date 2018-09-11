@@ -4,10 +4,6 @@ import time
 import json
 from pymongo import MongoClient
 
-
-
-
-
 running=True
 
 while running:
