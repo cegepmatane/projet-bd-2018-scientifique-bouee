@@ -22,8 +22,8 @@ while running:
     formatedString=formatedString[:-1]
     formatedString+="}"
     print(formatedString)
-    donneeDAO.writeValues(json.loads(formatedString))
+    donneeDAO.insererValeur(json.loads(formatedString))
 
-    time.sleep(2)
+    time.sleep(0.1)
 
 

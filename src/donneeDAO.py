@@ -1,23 +1,24 @@
 from pymongo import MongoClient
 
 
-def writeValues(json):
+def insererValeur(json):
     try : 
         conn = MongoClient()
         print("connected")
 
         db = conn.scientifique
         collection = db.donneeBouee
+        print("get collection")
 
         #insert json
         result = collection.insert(json) 
-        print("inserted")
+        print("inserted ")
 
     except:
         print("error")
         
         
-def getValues():
+def recupererValeur():
     try : 
         conn = MongoClient()
         print("connected")
@@ -40,5 +41,5 @@ def getValues():
         
     except Exception as e:
     
-        print(e)
-        return("error")
+        return e
+        #return("error")
