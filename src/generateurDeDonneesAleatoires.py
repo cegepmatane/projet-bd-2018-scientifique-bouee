@@ -11,7 +11,7 @@ while running:
     data.append(("\"temperature\"",random.uniform(-10,40))) #generate random temperature
     data.append(("\"salinity\"",random.uniform(0,100))) #generate random salinity in %
     data.append(("\"difraction\"",random.uniform(0,100))) #generate random difraction in %
-    
+   
     formatedString="{"
     for i in data:
         formatedString+=str(i[0])
@@ -22,7 +22,8 @@ while running:
     formatedString=formatedString[:-1]
     formatedString+="}"
     print(formatedString)
-    donneeDAO.insererValeur(json.loads(formatedString))
+
+    donneeDAO.insererValeur(json.loads(formatedString)) #envoie dans la base mongodb
 
     time.sleep(0.1)
 
