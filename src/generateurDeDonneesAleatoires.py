@@ -6,6 +6,7 @@ from pymongo import MongoClient
 
 running=True
 
+#boucle generant 10 donnees par seconde
 while running:
     data=[]
     data.append(("\"temperature\"",random.uniform(-10,40))) #generate random temperature
