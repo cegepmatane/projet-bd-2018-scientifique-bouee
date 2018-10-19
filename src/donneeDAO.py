@@ -4,37 +4,35 @@ from pymongo import MongoClient
 def insererValeur(json):
     try : 
         conn = MongoClient() #connection a la base mongodb
-        print("connected")
+        print("connecte")
 
         db = conn.scientifique #selection de la base de donnee
         collection = db.donneeBouee #selection de la collection
-        print("get collection")
+        print("recuperation collection")
 
         #insert json
         result = collection.insert(json) #insertion du json
-        print("inserted ")
+        print("insertion")
 
     except:
-        print("error")
+        print("erreur")
         
         
 def recupererValeur():
     try : 
         conn = MongoClient()
-        print("connected")
+        print("connecte")
 
         db = conn.scientifique #selection de la base de donnee
 
         collection = db.donneeBouee #selection de la collection
 
         curseur = collection.find() #recuperation de toutes les donnees de la collection
-        #collection.delete_many()
 
         resultString="" 
         for enregistrement in curseur :
             resultString+=str(enregistrement) #formatage des donnees
             
-        #curseur.close()
         collection.drop() #suppression des donnees en local
             
         return str(resultString)

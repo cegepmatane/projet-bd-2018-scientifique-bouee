@@ -8,24 +8,22 @@ running=True
 
 #boucle generant 10 donnees par seconde
 while running:
-    data=[]
-    data.append(("\"temperature\"",random.uniform(-10,40))) #generate random temperature
-    data.append(("\"salinity\"",random.uniform(0,100))) #generate random salinity in %
-    data.append(("\"difraction\"",random.uniform(0,100))) #generate random difraction in %
+    donnee=[]
+    donnee.append(("\"temperature\"",random.uniform(-10,40))) #generation de temperature aleatoire
+    donnee.append(("\"salinity\"",random.uniform(0,100))) #generation de salinite aleatoire en %
+    donnee.append(("\"difraction\"",random.uniform(0,100))) #generation de difraction aleatoire en %
    
-    formatedString="{"
-    for i in data:
-        formatedString+=str(i[0])
-        formatedString+=":"
-        formatedString+="\""+str(i[1])+"\""
-        formatedString+=","
+    stringFormatee="{"
+    for i in donnee:
+        stringFormatee+=str(i[0])
+        stringFormatee+=":"
+        stringFormatee+="\""+str(i[1])+"\""
+        stringFormatee+=","
     
-    formatedString=formatedString[:-1]
-    formatedString+="}"
-    print(formatedString)
+    stringFormatee=stringFormatee[:-1]
+    stringFormatee+="}"
+    print(stringFormatee)
 
-    donneeDAO.insererValeur(json.loads(formatedString)) #envoie dans la base mongodb
+    donneeDAO.insererValeur(json.loads(stringFormatee)) #envoie les valeurs dans la base mongodb
 
     time.sleep(0.1)
-
-
