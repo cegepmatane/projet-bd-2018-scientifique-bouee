@@ -19,7 +19,7 @@ while running:
     donnee.append(("\"humidite\"",random.uniform(-10,40))) #generation de temperature aleatoire
     donnee.append(("\"rafales\"",random.uniform(-10,40))) #generation de temperature aleatoire
     donnee.append(("\"salaniteEau\"",random.uniform(0,100))) #generation de salinite aleatoire en %
-    donnee.append(("\"densiteeEau\"",random.uniform(0,100))) #generation de difraction aleatoire en %
+    donnee.append(("\"densiteeEau\"",random.uniform(0,100))) #generation de difraction aleatoire en % 
    
     stringFormatee="{"
     for i in donnee:
