@@ -1,42 +1,37 @@
-from pymongo import MongoClient
+import sqlite3
+import datetime
+import json
 
 
-def insererValeur(json):
-    try : 
-        conn = MongoClient() #connection a la base mongodb
-        print("connecte")
+def insererValeur(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau):
+    
+    connection = sqlite3.connect("bouee.db") #connection a la table bouee de la bd sqlite
+    curseur = connection.cursor()
+    curseur.execute('''INSERT INTO donneeBouee(temperatureAir,temperatureEau,directionVent,vitesseVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,saliniteEau,densiteeEau) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau))
 
-        db = conn.scientifique #selection de la base de donnee
-        collection = db.donneeBouee #selection de la collection
-        print("recuperation collection")
-
-        #insert json
-        result = collection.insert(json) #insertion du json
-        print("insertion")
-
-    except:
-        print("erreur")
+    connection.commit()
+    connection.close()
         
         
 def recupererValeur():
-    try : 
-        conn = MongoClient()
-        print("connecte")
 
-        db = conn.scientifique #selection de la base de donnee
+    connection = sqlite3.connect("bouee.db") #connection a la table bouee de la bd sqlite
+    print("connecte")
 
-        collection = db.donneeBouee #selection de la collection
+    connection.row_factory = sqlite3.Row
 
-        curseur = collection.find() #recuperation de toutes les donnees de la collection
+    curseur = connection.cursor()
+    resultat = curseur.execute('''SELECT temperatureAir,temperatureEau,directionVent,vitesseVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,saliniteEau,densiteeEau FROM donneeBouee''').fetchall()
 
-        resultString="" 
-        for enregistrement in curseur :
-            resultString+=str(enregistrement) #formatage des donnees
-            
-        collection.drop() #suppression des donnees en local
-            
-        return str(resultString)
-        
-    except Exception as e:
-    
-        return e
+    """for row in curseur:
+    row[0] returns the first column in the query (name), row[1] returns email column.
+        print('{0} : {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}'.format(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]))"""
+
+    curseur.execute('''DELETE FROM donneeBouee''')
+    connection.commit()
+    connection.close()
+
+    donneeJson = ""
+    donneeJson = json.dumps([dict(ix) for ix in resultat] )
+    print(donneeJson)
+
