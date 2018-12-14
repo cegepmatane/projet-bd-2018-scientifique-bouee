@@ -42,8 +42,8 @@ while running:
     rafales = random.uniform(-10,40)
     salaniteEau = random.uniform(0,100)
     densiteeEau = random.uniform(0,100)
-    longitude = random.uniform(48.567596,49.286765)
-    latitude = random.uniform(-69.059627,-68.739100)
+    latitude = random.uniform(48.567596,49.286765)
+    longitude = random.uniform(-69.059627,-68.739100)
     idShard = 1
     date = 1
 
