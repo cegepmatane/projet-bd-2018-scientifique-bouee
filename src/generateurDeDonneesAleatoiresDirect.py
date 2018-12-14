@@ -47,14 +47,14 @@ while running:
     idShard = 1
     date = 1
 
-    stringDonnee = '{"temperatureEau": ' + str(temperatureEau) + ', ' + '"temperatureAir": ' + str(temperatureAir) + ', ' +  '"directionVent": ' + str(directionVent) + ', ' + '"kilometrageVent": ' + str(kilometrageVent) + ', ' + '"hauteurMaximum": ' + str(hauteurMaximum) + ', ' + '"vagueMoyenne": ' + str(vagueMoyenne) + ', '+ '"periodeVague": ' + str(periodeVague) + ', ' + '"humidite": ' + str(humidite) + ', ' + '"rafales": ' + str(rafales) + ', ' + '"saliniteEau": ' + str(salaniteEau) + ', ' + '"densiteEau": ' + str(densiteeEau) + ', ' + '"longitude": ' + str(longitude) + ', ' + '"latitude": ' + str(latitude) + ', ' + '"idShard": ' + str(idShard) + ', ' + '"date": ' + str(date) + '}'
+    objetDonnee = {"temperatureEau": temperatureEau, "temperatureAir": temperatureAir, "directionVent": directionVent, "kilometrageVent": kilometrageVent, "hauteurMaximum": hauteurMaximum, "vagueMoyenne": vagueMoyenne, "periodeVague": periodeVague, "humidite": humidite, "rafales": rafales, "saliniteEau": salaniteEau, "densiteEau": densiteeEau, "longitude": longitude, "latitude": latitude, "idShard": idShard,"date": date}
 
-    #print(stringDonnee)
 
-    jsonDonnee = json.dumps(stringDonnee)
+
+    jsonDonnee = json.dumps(objetDonnee)
 
     #print(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau)
 
-    donneeDAO.recupererValeurDirect(jsonDonnee) #envoie les valeurs directement au serveur 
+    donneeDAO.envoyerValeurDirect(jsonDonnee) #envoie les valeurs directement au serveur 
 
-    time.sleep(0.5)
+    time.sleep(1)
