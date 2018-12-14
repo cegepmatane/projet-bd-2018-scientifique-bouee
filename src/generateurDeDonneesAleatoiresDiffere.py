@@ -42,9 +42,14 @@ while running:
     rafales = random.uniform(-10,40)
     salaniteEau = random.uniform(0,100)
     densiteeEau = random.uniform(0,100)
+    longitude = random.uniform(48.567596,49.286765)
+    latitude = random.uniform(-69.059627,-68.739100)
+    idShard = 1
+    date = 1
+
 
     #print(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau)
 
-    donneeDAO.insererValeur(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau) #envoie les valeurs dans la base sqlite
+    donneeDAO.insererValeurDifferee(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau,longitude,latitude,idShard,date) #envoie les valeurs dans la base sqlite3 sur le raspberry
 
-    time.sleep(0.1)
+    time.sleep(0.5)
