@@ -2,6 +2,7 @@ import random
 import time
 import json
 import donneeDAO
+import datetime
 
 running=True
 
@@ -42,12 +43,17 @@ while running:
     rafales = random.uniform(-10,40)
     salaniteEau = random.uniform(0,100)
     densiteeEau = random.uniform(0,100)
-    longitude = random.uniform(48.567596,49.286765)
-    latitude = random.uniform(-69.059627,-68.739100)
+    longitude = random.uniform(48.750547,49.012203)
+    latitude = random.uniform(-68.453351,-67.976613)
     idShard = 1
-    date = 1
 
-    objetDonnee = {"temperatureEau": temperatureEau, "temperatureAir": temperatureAir, "directionVent": directionVent, "kilometrageVent": kilometrageVent, "hauteurMaximum": hauteurMaximum, "vagueMoyenne": vagueMoyenne, "periodeVague": periodeVague, "humidite": humidite, "rafales": rafales, "saliniteEau": salaniteEau, "densiteEau": densiteeEau, "longitude": longitude, "latitude": latitude, "idShard": idShard,"date": date}
+    date = datetime.datetime.now()
+    dateFormatee = date.strftime("%Y-%m-%d %H:%M:%S")
+    print(dateFormatee)
+
+
+
+    objetDonnee = {"temperatureEau": temperatureEau, "temperatureAir": temperatureAir, "directionVent": directionVent, "kilometrageVent": kilometrageVent, "hauteurMaximum": hauteurMaximum, "vagueMoyenne": vagueMoyenne, "periodeVague": periodeVague, "humidite": humidite, "rafales": rafales, "saliniteEau": salaniteEau, "densiteEau": densiteeEau, "longitude": longitude, "latitude": latitude, "idShard": idShard,"date": dateFormatee}
 
 
 
@@ -57,4 +63,4 @@ while running:
 
     donneeDAO.envoyerValeurDirect(jsonDonnee) #envoie les valeurs directement au serveur 
 
-    time.sleep(1)
+    time.sleep(20)

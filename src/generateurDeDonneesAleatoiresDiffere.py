@@ -2,6 +2,7 @@ import random
 import donneeDAO
 import time
 import json
+import datetime
 
 running=True
 
@@ -42,14 +43,16 @@ while running:
     rafales = random.uniform(-10,40)
     salaniteEau = random.uniform(0,100)
     densiteeEau = random.uniform(0,100)
-    longitude = random.uniform(48.567596,49.286765)
-    latitude = random.uniform(-69.059627,-68.739100)
+    longitude = random.uniform(48.750547,49.012203)
+    latitude = random.uniform(-68.453351,-67.976613)
     idShard = 1
-    date = 1
+    date = datetime.datetime.now()
+    dateFormatee = date.strftime("%Y-%m-%d %H:%M:%S")
+    print(dateFormatee)
 
 
     #print(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau)
 
-    donneeDAO.insererValeurDifferee(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau,longitude,latitude,idShard,date) #envoie les valeurs dans la base sqlite3 sur le raspberry
+    donneeDAO.insererValeurDifferee(temperatureAir,temperatureEau,directionVent,kilometrageVent,hauteurMaximum,vagueMoyenne,periodeVague,humidite,rafales,salaniteEau,densiteeEau,longitude,latitude,idShard,dateFormatee) #envoie les valeurs dans la base sqlite3 sur le raspberry
 
-    time.sleep(0.5)
+    time.sleep(20)
